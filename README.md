@@ -2,7 +2,7 @@
 
 A comprehensive Information Retrieval system implementing multiple retrieval methods with proper evaluation using standard IR metrics.
 
-## 📋 Project Overview
+## Project Overview
 
 This project implements and compares **four retrieval methods** on a corpus of **1000 ML/AI research papers**:
 
@@ -19,7 +19,7 @@ All methods are evaluated using **standard IR metrics**:
 - NDCG (Normalized Discounted Cumulative Gain)
 - MRR (Mean Reciprocal Rank)
 
-## 📊 Dataset
+## Dataset
 
 - **Corpus**: 1000 ML/AI research papers (titles + abstracts)
 - **Categories**: cs.CL, cs.CV, cs.LG, cs.AI, cs.IR
@@ -36,7 +36,7 @@ python load_arxiv_data.py --download --num-papers 1000
 # 3. Run: python load_arxiv_data.py --input data/raw/arxiv.csv
 ```
 
-## 🏗️ Project Structure
+## Project Structure
 
 ```
 ir_project/
@@ -63,7 +63,7 @@ ir_project/
 └── tests/                    # Unit tests
 ```
 
-## 🚀 Quick Start
+## Quick Start
 
 ### Installation
 
@@ -97,7 +97,7 @@ python main.py --mode search
 streamlit run app.py
 ```
 
-## 📊 Retrieval Methods
+## Retrieval Methods
 
 ### 1. TF-IDF (Term Frequency-Inverse Document Frequency)
 
@@ -157,7 +157,7 @@ retriever.index(corpus)
 results = retriever.retrieve("language model pretraining", top_k=10)
 ```
 
-## 📈 Evaluation Metrics
+## Evaluation Metrics
 
 ### Implemented Metrics
 
@@ -187,7 +187,7 @@ results = benchmark.evaluate(bm25_retriever)
 comparison = benchmark.compare([tfidf, bm25, dense, hybrid])
 ```
 
-## 📝 Sample Output
+## Sample Output
 
 ```
 ======================================================================
@@ -202,7 +202,7 @@ HybridRetriever         0.8567     0.9333    0.6267    0.3333    0.9333    0.878
 ======================================================================
 ```
 
-## 🎯 Key Features
+## Key Features
 
 1. **Modular Design**: Easy to add new retrievers or metrics
 2. **Proper Evaluation**: Uses standard IR benchmarking methodology
@@ -210,7 +210,7 @@ HybridRetriever         0.8567     0.9333    0.6267    0.3333    0.9333    0.878
 4. **Interactive UI**: Both CLI and web interface
 5. **Graded Relevance**: Supports both binary and graded relevance judgments
 
-## 📚 Extending the System
+## Extending the System
 
 ### Adding a New Retriever
 
@@ -240,7 +240,7 @@ corpus = Corpus(docs)
 corpus.save("data/my_corpus.json")
 ```
 
-## 🔬 Theoretical Background
+## Theoretical Background
 
 ### Why Multiple Methods?
 
@@ -262,15 +262,10 @@ RRF_score(d) = Σ 1 / (k + rank(d))
 where `k` is typically 60. This method is robust and often outperforms
 individual methods.
 
-## 📖 References
 
-1. Robertson, S. E., & Walker, S. (1994). Some simple effective approximations to the 2-Poisson model for probabilistic weighted retrieval. *SIGIR*.
-2. Reimers, N., & Gurevych, I. (2019). Sentence-BERT: Sentence embeddings using Siamese BERT-networks. *EMNLP*.
-3. Cormack, G. V., Clarke, C. L., & Buettcher, S. (2009). Reciprocal rank fusion outperforms condorcet and individual rank learning methods. *SIGIR*.
+## License
 
-## 📄 License
-
-MIT License - Free to use for academic purposes.
+MIT License.
 
 ---
 
