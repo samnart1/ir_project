@@ -1,6 +1,6 @@
 # Research Paper Information Retrieval System
 
-A comprehensive Information Retrieval system implementing multiple retrieval methods with proper evaluation using standard IR metrics.
+An Information Retrieval system implementing multiple retrieval methods with evaluation using standard IR metrics.
 
 ## Project Overview
 
@@ -40,26 +40,26 @@ python load_arxiv_data.py --download --num-papers 1000
 
 ```
 ir_project/
-├── main.py                    # CLI interface
-├── app.py                     # Streamlit web UI
+├── main.py                    # CLI 
+├── app.py                     # Streamlit 
 ├── requirements.txt           # Dependencies
 ├── data/
-│   ├── corpus.json           # Document corpus (25 ML papers)
-│   └── queries.json          # Evaluation queries with relevance judgments
+│   ├── corpus.json           # Document corpus
+│   └── queries.json          # Evaluation queries 
 ├── src/
 │   ├── __init__.py
 │   ├── corpus.py             # Document & corpus handling
 │   ├── retrievers/
 │   │   ├── __init__.py
-│   │   ├── base.py           # Base retriever interface
-│   │   ├── tfidf.py          # TF-IDF implementation
-│   │   ├── bm25.py           # BM25 implementation
+│   │   ├── base.py           # Base retriever 
+│   │   ├── tfidf.py          # TF-IDF 
+│   │   ├── bm25.py           # BM25 
 │   │   ├── dense.py          # Dense retrieval (sentence-transformers)
 │   │   └── hybrid.py         # Hybrid RRF fusion
 │   └── evaluation/
 │       ├── __init__.py
 │       ├── metrics.py        # IR evaluation metrics
-│       └── benchmark.py      # Benchmarking suite
+│       └── benchmark.py      # Benchmarking 
 └── tests/                    # Unit tests
 ```
 
@@ -68,26 +68,26 @@ ir_project/
 ### Installation
 
 ```bash
-# Clone/download the project
+# clone and move into the project
 cd ir_project
 
-# Install dependencies
+# install dependencies
 pip install -r requirements.txt
 
-# Download NLTK data (automatic on first run)
+# download NLTK data (automatic on first run)
 python -c "import nltk; nltk.download('punkt'); nltk.download('stopwords')"
 ```
 
 ### Usage
 
 ```bash
-# Quick demo (fast, sparse methods only)
+# Quick demo 
 python main.py --mode demo
 
 # Full evaluation (sparse methods)
 python main.py --mode evaluate
 
-# Full evaluation including neural methods (slower but comprehensive)
+# Full evaluation including neural methods (a bit slower )
 python main.py --mode evaluate --dense
 
 # Interactive search
@@ -266,7 +266,3 @@ individual methods.
 ## License
 
 MIT License.
-
----
-
-*Built for Information Retrieval Course*
