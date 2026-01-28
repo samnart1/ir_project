@@ -1,0 +1,732 @@
+[
+  {
+    "query_id": "q01",
+    "query_text": "transformer attention mechanism",
+    "relevant_docs": [
+      "arxiv_0000",
+      "arxiv_0009",
+      "arxiv_0010",
+      "arxiv_0027",
+      "arxiv_0094",
+      "arxiv_0106",
+      "arxiv_0113",
+      "arxiv_0116",
+      "arxiv_0121",
+      "arxiv_0122"
+    ],
+    "graded_relevance": {
+      "arxiv_0000": 3,
+      "arxiv_0009": 3,
+      "arxiv_0010": 3,
+      "arxiv_0027": 3,
+      "arxiv_0094": 2,
+      "arxiv_0106": 2,
+      "arxiv_0113": 2,
+      "arxiv_0116": 2,
+      "arxiv_0121": 2,
+      "arxiv_0122": 2
+    }
+  },
+  {
+    "query_id": "q02",
+    "query_text": "image classification convolutional network",
+    "relevant_docs": [
+      "arxiv_0013",
+      "arxiv_0014",
+      "arxiv_0015",
+      "arxiv_0022",
+      "arxiv_0025",
+      "arxiv_0027",
+      "arxiv_0060",
+      "arxiv_0067",
+      "arxiv_0000",
+      "arxiv_0012"
+    ],
+    "graded_relevance": {
+      "arxiv_0013": 3,
+      "arxiv_0014": 3,
+      "arxiv_0015": 3,
+      "arxiv_0022": 3,
+      "arxiv_0025": 3,
+      "arxiv_0027": 3,
+      "arxiv_0060": 3,
+      "arxiv_0067": 3,
+      "arxiv_0000": 2,
+      "arxiv_0012": 2
+    }
+  },
+  {
+    "query_id": "q03",
+    "query_text": "object detection real time",
+    "relevant_docs": [
+      "arxiv_0021",
+      "arxiv_0022",
+      "arxiv_0023",
+      "arxiv_0058",
+      "arxiv_0110",
+      "arxiv_0130",
+      "arxiv_0144",
+      "arxiv_0158",
+      "arxiv_0172",
+      "arxiv_0186"
+    ],
+    "graded_relevance": {
+      "arxiv_0021": 3,
+      "arxiv_0022": 3,
+      "arxiv_0023": 3,
+      "arxiv_0058": 3,
+      "arxiv_0110": 3,
+      "arxiv_0130": 3,
+      "arxiv_0144": 3,
+      "arxiv_0158": 3,
+      "arxiv_0172": 3,
+      "arxiv_0186": 3
+    }
+  },
+  {
+    "query_id": "q04",
+    "query_text": "word embeddings representation",
+    "relevant_docs": [
+      "arxiv_0046",
+      "arxiv_0047",
+      "arxiv_0048",
+      "arxiv_0049",
+      "arxiv_0050",
+      "arxiv_0069",
+      "arxiv_0074",
+      "arxiv_0001",
+      "arxiv_0006",
+      "arxiv_0007"
+    ],
+    "graded_relevance": {
+      "arxiv_0046": 3,
+      "arxiv_0047": 3,
+      "arxiv_0048": 3,
+      "arxiv_0049": 3,
+      "arxiv_0050": 3,
+      "arxiv_0069": 3,
+      "arxiv_0074": 3,
+      "arxiv_0001": 1,
+      "arxiv_0006": 1,
+      "arxiv_0007": 1
+    }
+  },
+  {
+    "query_id": "q05",
+    "query_text": "generative adversarial network",
+    "relevant_docs": [
+      "arxiv_0029",
+      "arxiv_0030",
+      "arxiv_0031",
+      "arxiv_0032",
+      "arxiv_0033",
+      "arxiv_0044"
+    ],
+    "graded_relevance": {
+      "arxiv_0029": 3,
+      "arxiv_0030": 3,
+      "arxiv_0031": 3,
+      "arxiv_0032": 3,
+      "arxiv_0033": 3,
+      "arxiv_0044": 2
+    }
+  },
+  {
+    "query_id": "q06",
+    "query_text": "reinforcement learning game",
+    "relevant_docs": [
+      "arxiv_0038",
+      "arxiv_0039",
+      "arxiv_0040",
+      "arxiv_0041",
+      "arxiv_0042",
+      "arxiv_0043",
+      "arxiv_0044",
+      "arxiv_0045",
+      "arxiv_0002",
+      "arxiv_0006"
+    ],
+    "graded_relevance": {
+      "arxiv_0038": 3,
+      "arxiv_0039": 3,
+      "arxiv_0040": 3,
+      "arxiv_0041": 3,
+      "arxiv_0042": 3,
+      "arxiv_0043": 3,
+      "arxiv_0044": 3,
+      "arxiv_0045": 3,
+      "arxiv_0002": 1,
+      "arxiv_0006": 1
+    }
+  },
+  {
+    "query_id": "q07",
+    "query_text": "recurrent neural network sequence",
+    "relevant_docs": [
+      "arxiv_0000",
+      "arxiv_0061",
+      "arxiv_0062",
+      "arxiv_0063",
+      "arxiv_0065",
+      "arxiv_0066",
+      "arxiv_0027",
+      "arxiv_0009",
+      "arxiv_0010",
+      "arxiv_0012"
+    ],
+    "graded_relevance": {
+      "arxiv_0000": 3,
+      "arxiv_0061": 3,
+      "arxiv_0062": 3,
+      "arxiv_0063": 3,
+      "arxiv_0065": 3,
+      "arxiv_0066": 3,
+      "arxiv_0027": 2,
+      "arxiv_0009": 1,
+      "arxiv_0010": 1,
+      "arxiv_0012": 1
+    }
+  },
+  {
+    "query_id": "q08",
+    "query_text": "graph neural network",
+    "relevant_docs": [
+      "arxiv_0000",
+      "arxiv_0012",
+      "arxiv_0013",
+      "arxiv_0015",
+      "arxiv_0017",
+      "arxiv_0018",
+      "arxiv_0020",
+      "arxiv_0021",
+      "arxiv_0038",
+      "arxiv_0040"
+    ],
+    "graded_relevance": {
+      "arxiv_0000": 3,
+      "arxiv_0012": 3,
+      "arxiv_0013": 3,
+      "arxiv_0015": 3,
+      "arxiv_0017": 3,
+      "arxiv_0018": 3,
+      "arxiv_0020": 3,
+      "arxiv_0021": 3,
+      "arxiv_0038": 3,
+      "arxiv_0040": 3
+    }
+  },
+  {
+    "query_id": "q09",
+    "query_text": "language model pre-training",
+    "relevant_docs": [
+      "arxiv_0001",
+      "arxiv_0002",
+      "arxiv_0003",
+      "arxiv_0004",
+      "arxiv_0005",
+      "arxiv_0006",
+      "arxiv_0007",
+      "arxiv_0008",
+      "arxiv_0011",
+      "arxiv_0049"
+    ],
+    "graded_relevance": {
+      "arxiv_0001": 3,
+      "arxiv_0002": 3,
+      "arxiv_0003": 3,
+      "arxiv_0004": 3,
+      "arxiv_0005": 3,
+      "arxiv_0006": 3,
+      "arxiv_0007": 3,
+      "arxiv_0008": 3,
+      "arxiv_0011": 3,
+      "arxiv_0049": 3
+    }
+  },
+  {
+    "query_id": "q10",
+    "query_text": "machine translation neural",
+    "relevant_docs": [
+      "arxiv_0000",
+      "arxiv_0002",
+      "arxiv_0051",
+      "arxiv_0062",
+      "arxiv_0064",
+      "arxiv_0135",
+      "arxiv_0149",
+      "arxiv_0163",
+      "arxiv_0177",
+      "arxiv_0191"
+    ],
+    "graded_relevance": {
+      "arxiv_0000": 3,
+      "arxiv_0002": 3,
+      "arxiv_0051": 3,
+      "arxiv_0062": 3,
+      "arxiv_0064": 3,
+      "arxiv_0135": 3,
+      "arxiv_0149": 3,
+      "arxiv_0163": 3,
+      "arxiv_0177": 3,
+      "arxiv_0191": 3
+    }
+  },
+  {
+    "query_id": "q11",
+    "query_text": "image segmentation semantic",
+    "relevant_docs": [
+      "arxiv_0024",
+      "arxiv_0025",
+      "arxiv_0026",
+      "arxiv_0037",
+      "arxiv_0092",
+      "arxiv_0097",
+      "arxiv_0108",
+      "arxiv_0012",
+      "arxiv_0013",
+      "arxiv_0014"
+    ],
+    "graded_relevance": {
+      "arxiv_0024": 3,
+      "arxiv_0025": 3,
+      "arxiv_0026": 3,
+      "arxiv_0037": 3,
+      "arxiv_0092": 3,
+      "arxiv_0097": 3,
+      "arxiv_0108": 3,
+      "arxiv_0012": 1,
+      "arxiv_0013": 1,
+      "arxiv_0014": 1
+    }
+  },
+  {
+    "query_id": "q12",
+    "query_text": "optimization gradient descent",
+    "relevant_docs": [
+      "arxiv_0042",
+      "arxiv_0052",
+      "arxiv_0081",
+      "arxiv_0059",
+      "arxiv_0036",
+      "arxiv_0057",
+      "arxiv_0061",
+      "arxiv_0101"
+    ],
+    "graded_relevance": {
+      "arxiv_0042": 3,
+      "arxiv_0052": 3,
+      "arxiv_0081": 3,
+      "arxiv_0059": 2,
+      "arxiv_0036": 1,
+      "arxiv_0057": 1,
+      "arxiv_0061": 1,
+      "arxiv_0101": 1
+    }
+  },
+  {
+    "query_id": "q13",
+    "query_text": "dropout regularization",
+    "relevant_docs": [
+      "arxiv_0117",
+      "arxiv_0119",
+      "arxiv_0051",
+      "arxiv_0057",
+      "arxiv_0128",
+      "arxiv_0142",
+      "arxiv_0156",
+      "arxiv_0170",
+      "arxiv_0184",
+      "arxiv_0198"
+    ],
+    "graded_relevance": {
+      "arxiv_0117": 3,
+      "arxiv_0119": 3,
+      "arxiv_0051": 1,
+      "arxiv_0057": 1,
+      "arxiv_0128": 1,
+      "arxiv_0142": 1,
+      "arxiv_0156": 1,
+      "arxiv_0170": 1,
+      "arxiv_0184": 1,
+      "arxiv_0198": 1
+    }
+  },
+  {
+    "query_id": "q14",
+    "query_text": "batch normalization training",
+    "relevant_docs": [
+      "arxiv_0053",
+      "arxiv_0054",
+      "arxiv_0055",
+      "arxiv_0033",
+      "arxiv_0042"
+    ],
+    "graded_relevance": {
+      "arxiv_0053": 3,
+      "arxiv_0054": 3,
+      "arxiv_0055": 3,
+      "arxiv_0033": 2,
+      "arxiv_0042": 1
+    }
+  },
+  {
+    "query_id": "q15",
+    "query_text": "residual learning deep network",
+    "relevant_docs": [
+      "arxiv_0012",
+      "arxiv_0023",
+      "arxiv_0030",
+      "arxiv_0038",
+      "arxiv_0040",
+      "arxiv_0041",
+      "arxiv_0051",
+      "arxiv_0053",
+      "arxiv_0055",
+      "arxiv_0063"
+    ],
+    "graded_relevance": {
+      "arxiv_0012": 3,
+      "arxiv_0023": 3,
+      "arxiv_0030": 3,
+      "arxiv_0038": 3,
+      "arxiv_0040": 3,
+      "arxiv_0041": 3,
+      "arxiv_0051": 3,
+      "arxiv_0053": 3,
+      "arxiv_0055": 3,
+      "arxiv_0063": 3
+    }
+  },
+  {
+    "query_id": "q16",
+    "query_text": "passage retrieval question answering",
+    "relevant_docs": [
+      "arxiv_0073",
+      "arxiv_0074",
+      "arxiv_0075",
+      "arxiv_0109",
+      "arxiv_0002",
+      "arxiv_0125",
+      "arxiv_0139",
+      "arxiv_0153",
+      "arxiv_0167",
+      "arxiv_0181"
+    ],
+    "graded_relevance": {
+      "arxiv_0073": 3,
+      "arxiv_0074": 3,
+      "arxiv_0075": 3,
+      "arxiv_0109": 3,
+      "arxiv_0002": 2,
+      "arxiv_0125": 2,
+      "arxiv_0139": 2,
+      "arxiv_0153": 2,
+      "arxiv_0167": 2,
+      "arxiv_0181": 2
+    }
+  },
+  {
+    "query_id": "q17",
+    "query_text": "sentence embeddings similarity",
+    "relevant_docs": [
+      "arxiv_0076",
+      "arxiv_0046",
+      "arxiv_0064",
+      "arxiv_0069",
+      "arxiv_0074"
+    ],
+    "graded_relevance": {
+      "arxiv_0076": 3,
+      "arxiv_0046": 1,
+      "arxiv_0064": 1,
+      "arxiv_0069": 1,
+      "arxiv_0074": 1
+    }
+  },
+  {
+    "query_id": "q18",
+    "query_text": "diffusion model generation",
+    "relevant_docs": [
+      "arxiv_0036",
+      "arxiv_0035",
+      "arxiv_0037",
+      "arxiv_0118"
+    ],
+    "graded_relevance": {
+      "arxiv_0036": 3,
+      "arxiv_0035": 1,
+      "arxiv_0037": 1,
+      "arxiv_0118": 1
+    }
+  },
+  {
+    "query_id": "q19",
+    "query_text": "vision transformer",
+    "relevant_docs": [
+      "arxiv_0002",
+      "arxiv_0027",
+      "arxiv_0028",
+      "arxiv_0000",
+      "arxiv_0001",
+      "arxiv_0008",
+      "arxiv_0009",
+      "arxiv_0010",
+      "arxiv_0018",
+      "arxiv_0030"
+    ],
+    "graded_relevance": {
+      "arxiv_0002": 3,
+      "arxiv_0027": 3,
+      "arxiv_0028": 3,
+      "arxiv_0000": 1,
+      "arxiv_0001": 1,
+      "arxiv_0008": 1,
+      "arxiv_0009": 1,
+      "arxiv_0010": 1,
+      "arxiv_0018": 1,
+      "arxiv_0030": 1
+    }
+  },
+  {
+    "query_id": "q20",
+    "query_text": "knowledge distillation",
+    "relevant_docs": [
+      "arxiv_0041",
+      "arxiv_0089",
+      "arxiv_0115"
+    ],
+    "graded_relevance": {
+      "arxiv_0041": 1,
+      "arxiv_0089": 1,
+      "arxiv_0115": 1
+    }
+  },
+  {
+    "query_id": "q21",
+    "query_text": "contrastive learning self-supervised",
+    "relevant_docs": [
+      "arxiv_0105",
+      "arxiv_0006",
+      "arxiv_0091",
+      "arxiv_0098",
+      "arxiv_0121",
+      "arxiv_0123",
+      "arxiv_0137",
+      "arxiv_0151",
+      "arxiv_0165",
+      "arxiv_0179"
+    ],
+    "graded_relevance": {
+      "arxiv_0105": 3,
+      "arxiv_0006": 2,
+      "arxiv_0091": 2,
+      "arxiv_0098": 2,
+      "arxiv_0121": 2,
+      "arxiv_0123": 2,
+      "arxiv_0137": 2,
+      "arxiv_0151": 2,
+      "arxiv_0165": 2,
+      "arxiv_0179": 2
+    }
+  },
+  {
+    "query_id": "q22",
+    "query_text": "few-shot learning",
+    "relevant_docs": [
+      "arxiv_0003",
+      "arxiv_0093"
+    ],
+    "graded_relevance": {
+      "arxiv_0003": 1,
+      "arxiv_0093": 1
+    }
+  },
+  {
+    "query_id": "q23",
+    "query_text": "text classification sentiment",
+    "relevant_docs": [
+      "arxiv_0001",
+      "arxiv_0002",
+      "arxiv_0003",
+      "arxiv_0005",
+      "arxiv_0008",
+      "arxiv_0011",
+      "arxiv_0013",
+      "arxiv_0015",
+      "arxiv_0025",
+      "arxiv_0027"
+    ],
+    "graded_relevance": {
+      "arxiv_0001": 1,
+      "arxiv_0002": 1,
+      "arxiv_0003": 1,
+      "arxiv_0005": 1,
+      "arxiv_0008": 1,
+      "arxiv_0011": 1,
+      "arxiv_0013": 1,
+      "arxiv_0015": 1,
+      "arxiv_0025": 1,
+      "arxiv_0027": 1
+    }
+  },
+  {
+    "query_id": "q24",
+    "query_text": "named entity recognition",
+    "relevant_docs": [
+      "arxiv_0015",
+      "arxiv_0107",
+      "arxiv_0116",
+      "arxiv_0012",
+      "arxiv_0014",
+      "arxiv_0019",
+      "arxiv_0023",
+      "arxiv_0024",
+      "arxiv_0027",
+      "arxiv_0058"
+    ],
+    "graded_relevance": {
+      "arxiv_0015": 3,
+      "arxiv_0107": 3,
+      "arxiv_0116": 3,
+      "arxiv_0012": 1,
+      "arxiv_0014": 1,
+      "arxiv_0019": 1,
+      "arxiv_0023": 1,
+      "arxiv_0024": 1,
+      "arxiv_0027": 1,
+      "arxiv_0058": 1
+    }
+  },
+  {
+    "query_id": "q25",
+    "query_text": "information retrieval ranking",
+    "relevant_docs": [
+      "arxiv_0073",
+      "arxiv_0075",
+      "arxiv_0077",
+      "arxiv_0078",
+      "arxiv_0079",
+      "arxiv_0109",
+      "arxiv_0020",
+      "arxiv_0037",
+      "arxiv_0050",
+      "arxiv_0061"
+    ],
+    "graded_relevance": {
+      "arxiv_0073": 3,
+      "arxiv_0075": 3,
+      "arxiv_0077": 3,
+      "arxiv_0078": 3,
+      "arxiv_0079": 3,
+      "arxiv_0109": 3,
+      "arxiv_0020": 1,
+      "arxiv_0037": 1,
+      "arxiv_0050": 1,
+      "arxiv_0061": 1
+    }
+  },
+  {
+    "query_id": "q26",
+    "query_text": "tree boosting gradient",
+    "relevant_docs": [
+      "arxiv_0080",
+      "arxiv_0081",
+      "arxiv_0040",
+      "arxiv_0041",
+      "arxiv_0042",
+      "arxiv_0052",
+      "arxiv_0059",
+      "arxiv_0061",
+      "arxiv_0082"
+    ],
+    "graded_relevance": {
+      "arxiv_0080": 3,
+      "arxiv_0081": 3,
+      "arxiv_0040": 1,
+      "arxiv_0041": 1,
+      "arxiv_0042": 1,
+      "arxiv_0052": 1,
+      "arxiv_0059": 1,
+      "arxiv_0061": 1,
+      "arxiv_0082": 1
+    }
+  },
+  {
+    "query_id": "q27",
+    "query_text": "dimensionality reduction",
+    "relevant_docs": [
+      "arxiv_0006",
+      "arxiv_0087"
+    ],
+    "graded_relevance": {
+      "arxiv_0006": 1,
+      "arxiv_0087": 1
+    }
+  },
+  {
+    "query_id": "q28",
+    "query_text": "clustering algorithm",
+    "relevant_docs": [
+      "arxiv_0089"
+    ],
+    "graded_relevance": {
+      "arxiv_0089": 3
+    }
+  },
+  {
+    "query_id": "q29",
+    "query_text": "mobile efficient network",
+    "relevant_docs": [
+      "arxiv_0018",
+      "arxiv_0019",
+      "arxiv_0016",
+      "arxiv_0017",
+      "arxiv_0025",
+      "arxiv_0026",
+      "arxiv_0046",
+      "arxiv_0067",
+      "arxiv_0115",
+      "arxiv_0131"
+    ],
+    "graded_relevance": {
+      "arxiv_0018": 3,
+      "arxiv_0019": 3,
+      "arxiv_0016": 2,
+      "arxiv_0017": 2,
+      "arxiv_0025": 2,
+      "arxiv_0026": 2,
+      "arxiv_0046": 2,
+      "arxiv_0067": 2,
+      "arxiv_0115": 2,
+      "arxiv_0131": 2
+    }
+  },
+  {
+    "query_id": "q30",
+    "query_text": "policy gradient reinforcement",
+    "relevant_docs": [
+      "arxiv_0040",
+      "arxiv_0042",
+      "arxiv_0043",
+      "arxiv_0044",
+      "arxiv_0038",
+      "arxiv_0039",
+      "arxiv_0041",
+      "arxiv_0045",
+      "arxiv_0052",
+      "arxiv_0059"
+    ],
+    "graded_relevance": {
+      "arxiv_0040": 3,
+      "arxiv_0042": 3,
+      "arxiv_0043": 3,
+      "arxiv_0044": 3,
+      "arxiv_0038": 1,
+      "arxiv_0039": 1,
+      "arxiv_0041": 1,
+      "arxiv_0045": 1,
+      "arxiv_0052": 1,
+      "arxiv_0059": 1
+    }
+  }
+]
