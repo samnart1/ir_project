@@ -125,15 +125,9 @@ PAPERS_DATA = [
 
 
 def expand_corpus(base_papers: list, target_size: int = 1000) -> list:
-    """
-    Expand the corpus by generating variations of existing papers.
-    Creates realistic variations while maintaining diversity.
-    """
-    import hashlib
     
     expanded = []
     
-    # First add all base papers
     for i, paper in enumerate(base_papers):
         expanded.append({
             "doc_id": f"arxiv_{i:04d}",
@@ -144,7 +138,6 @@ def expand_corpus(base_papers: list, target_size: int = 1000) -> list:
             "year": paper["year"]
         })
     
-    # Topic variations for generating more papers
     topic_variations = {
         "cs.CL": [
             ("language model", ["pre-trained", "fine-tuned", "multilingual", "low-resource", "domain-specific"]),
@@ -187,17 +180,14 @@ def expand_corpus(base_papers: list, target_size: int = 1000) -> list:
         ],
     }
     
-    # Generate additional papers with balanced categories
     paper_id = len(base_papers)
     random.seed(42)
     
-    # Ensure balanced distribution
     category_weights = {"cs.CL": 0.25, "cs.CV": 0.25, "cs.LG": 0.30, "cs.AI": 0.10, "cs.IR": 0.10}
     categories_list = list(category_weights.keys())
     weights = list(category_weights.values())
     
     while len(expanded) < target_size:
-        # Pick a category based on weights
         category = random.choices(categories_list, weights=weights, k=1)[0]
         
         if category not in topic_variations:
@@ -207,7 +197,6 @@ def expand_corpus(base_papers: list, target_size: int = 1000) -> list:
         base_topic, variations = topic_group
         variation = random.choice(variations)
         
-        # Generate title
         title_templates = [
             f"Improving {variation.title()} with Novel Architecture",
             f"A Study of {variation.title()} Methods",
@@ -223,7 +212,6 @@ def expand_corpus(base_papers: list, target_size: int = 1000) -> list:
         
         title = random.choice(title_templates)
         
-        # Generate abstract with keywords that match the topic
         abstract_templates = [
             f"We propose a novel approach to {variation} that achieves state-of-the-art results on standard benchmarks. Our method leverages recent advances in {base_topic} and deep learning to address key challenges. Extensive experiments demonstrate the effectiveness of our approach, showing significant improvements over existing methods. We provide detailed ablation studies and analysis to understand the contribution of each component.",
             f"This paper presents a comprehensive study of {variation} methods for {base_topic}. We systematically evaluate various approaches and identify key factors that contribute to performance. Our analysis reveals important insights about the relationship between model architecture and task performance. Based on these findings, we propose several improvements that lead to better results.",
@@ -234,7 +222,6 @@ def expand_corpus(base_papers: list, target_size: int = 1000) -> list:
         
         abstract = random.choice(abstract_templates)
         
-        # Secondary category
         secondary_cats = [c for c in categories_list if c != category]
         secondary = random.choice(secondary_cats) if random.random() > 0.5 else None
         
@@ -242,7 +229,6 @@ def expand_corpus(base_papers: list, target_size: int = 1000) -> list:
         if secondary:
             cats.append(secondary)
         
-        # Create paper entry
         expanded.append({
             "doc_id": f"arxiv_{paper_id:04d}",
             "title": title,
@@ -258,7 +244,6 @@ def expand_corpus(base_papers: list, target_size: int = 1000) -> list:
 
 
 def generate_authors(title: str) -> list:
-    """Generate plausible author names."""
     first_names = ["Wei", "Jing", "Ming", "Xiao", "Yu", "Chen", "Li", "Zhang", "Yang", "Wang",
                    "John", "Michael", "David", "James", "Robert", "Sarah", "Emily", "Jennifer",
                    "Alexander", "Maria", "Thomas", "Anna", "Peter", "Laura", "Martin"]
@@ -277,12 +262,10 @@ def generate_authors(title: str) -> list:
 
 
 def generate_queries(corpus: list, num_queries: int = 30) -> list:
-    """Generate evaluation queries with relevance judgments."""
     random.seed(42)
     
     queries = []
     
-    # Manually curated high-quality queries with known relevant papers
     curated_queries = [
         {"query": "transformer attention mechanism", "keywords": ["transformer", "attention"]},
         {"query": "image classification convolutional network", "keywords": ["image", "classification", "convolutional"]},
