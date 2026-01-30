@@ -1,6 +1,5 @@
 """
 Evaluation module for Information Retrieval.
-
 Implements standard IR evaluation metrics and benchmarking utilities.
 """
 

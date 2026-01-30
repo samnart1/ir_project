@@ -1,14 +1,13 @@
 """
 Unit tests for the Information Retrieval system.
 
-Run with: pytest tests/test_ir_system.py -v
+Run: pytest tests/test_ir_system.py -v
 """
 
 import pytest
 import sys
 from pathlib import Path
 
-# Add parent directory to path
 sys.path.insert(0, str(Path(__file__).parent.parent))
 
 from src.corpus import Document, Corpus, TextPreprocessor
@@ -60,7 +59,7 @@ class TestPreprocessor:
         preprocessor = TextPreprocessor()
         tokens = preprocessor.preprocess("The quick brown fox jumps!")
         
-        assert "the" not in tokens  # stopword removed
+        assert "the" not in tokens 
         assert len(tokens) > 0
 
 
@@ -91,12 +90,10 @@ class TestMetrics:
         assert f1_at_k(retrieved, relevant, 3) == pytest.approx(expected_f1)
     
     def test_average_precision(self):
-        # Perfect ranking
         retrieved = ["d1", "d2", "d3"]
         relevant = {"d1", "d2", "d3"}
         assert average_precision(retrieved, relevant) == 1.0
         
-        # Imperfect ranking
         retrieved = ["d1", "x", "d2", "x", "d3"]
         relevant = {"d1", "d2", "d3"}
         ap = average_precision(retrieved, relevant)
@@ -107,7 +104,6 @@ class TestMetrics:
         relevant = {"d1"}
         assert reciprocal_rank(retrieved, relevant) == pytest.approx(1/3)
         
-        # First position
         retrieved = ["d1", "x", "x"]
         assert reciprocal_rank(retrieved, relevant) == 1.0
     
@@ -115,11 +111,9 @@ class TestMetrics:
         retrieved = ["d1", "d2", "d3"]
         relevance_scores = {"d1": 3, "d2": 2, "d3": 1}
         
-        # Perfect ranking should give NDCG = 1
         ndcg = ndcg_at_k(retrieved, relevance_scores, 3)
         assert ndcg == pytest.approx(1.0)
         
-        # Reversed ranking should give lower NDCG
         retrieved_bad = ["d3", "d2", "d1"]
         ndcg_bad = ndcg_at_k(retrieved_bad, relevance_scores, 3)
         assert ndcg_bad < ndcg
@@ -154,7 +148,7 @@ class TestIntegration:
         
         results = retriever.retrieve("language processing", top_k=2)
         assert len(results) == 2
-        # NLP doc should rank high
+        
         assert any(r.document.doc_id == "2" for r in results)
 
 

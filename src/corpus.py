@@ -1,7 +1,7 @@
 """
-Corpus handling and preprocessing for the IR system.
+Corpus handling and preprocessing.
 
-This module provides the Document and Corpus classes for loading,
+This provides the Document and Corpus classes for loading,
 preprocessing, and managing research paper collections.
 """
 
@@ -11,7 +11,6 @@ from dataclasses import dataclass, field
 from pathlib import Path
 from typing import List, Dict, Optional
 
-# Fallback stopwords if NLTK is unavailable
 ENGLISH_STOPWORDS = {
     'i', 'me', 'my', 'myself', 'we', 'our', 'ours', 'ourselves', 'you', "you're",
     "you've", "you'll", "you'd", 'your', 'yours', 'yourself', 'yourselves', 'he',
@@ -34,7 +33,6 @@ ENGLISH_STOPWORDS = {
     "weren't", 'won', "won't", 'wouldn', "wouldn't"
 }
 
-# Try to use NLTK, fall back to simple tokenization
 try:
     import nltk
     from nltk.corpus import stopwords as nltk_stopwords
@@ -53,7 +51,6 @@ except ImportError:
 
 @dataclass
 class Document:
-    """Represents a single document in the corpus."""
     doc_id: str
     title: str
     abstract: str
@@ -63,7 +60,6 @@ class Document:
     
     @property
     def text(self) -> str:
-        """Concatenated title and abstract for retrieval."""
         return f"{self.title} {self.abstract}"
     
     def to_dict(self) -> Dict:
@@ -89,7 +85,6 @@ class Document:
 
 
 class TextPreprocessor:
-    """Handles text preprocessing for IR."""
     
     def __init__(self, 
                  lowercase: bool = True,
@@ -101,13 +96,11 @@ class TextPreprocessor:
         self.remove_stopwords = remove_stopwords
         self.stem = stem
         
-        # Set up stemmer
         if stem and NLTK_AVAILABLE:
             self.stemmer = PorterStemmer()
         else:
             self.stemmer = None
         
-        # Set up stopwords
         if remove_stopwords:
             if NLTK_AVAILABLE:
                 try:
@@ -120,14 +113,10 @@ class TextPreprocessor:
             self.stop_words = set()
     
     def _simple_tokenize(self, text: str) -> List[str]:
-        """Simple whitespace and punctuation-based tokenization."""
-        # Split on whitespace and punctuation
         tokens = re.findall(r'\b\w+\b', text.lower())
         return tokens
     
     def _simple_stem(self, word: str) -> str:
-        """Very simple suffix stripping."""
-        # Basic suffix removal
         suffixes = ['ing', 'ed', 'ly', 'es', 's', 'ment', 'ness', 'tion', 'ation']
         for suffix in suffixes:
             if word.endswith(suffix) and len(word) > len(suffix) + 2:
@@ -135,14 +124,12 @@ class TextPreprocessor:
         return word
     
     def preprocess(self, text: str) -> List[str]:
-        """Preprocess text and return list of tokens."""
         if self.lowercase:
             text = text.lower()
         
         if self.remove_punctuation:
             text = re.sub(r'[^\w\s]', ' ', text)
         
-        # Tokenize
         if NLTK_AVAILABLE:
             try:
                 tokens = word_tokenize(text)
@@ -160,18 +147,15 @@ class TextPreprocessor:
             else:
                 tokens = [self._simple_stem(t) for t in tokens]
         
-        # Remove empty tokens and single characters
         tokens = [t for t in tokens if len(t) > 1]
         
         return tokens
     
     def preprocess_to_string(self, text: str) -> str:
-        """Preprocess and return as space-joined string."""
         return ' '.join(self.preprocess(text))
 
 
 class Corpus:
-    """Manages a collection of documents."""
     
     def __init__(self, documents: Optional[List[Document]] = None):
         self.documents: List[Document] = documents or []
@@ -179,29 +163,23 @@ class Corpus:
         self._rebuild_index()
     
     def _rebuild_index(self):
-        """Rebuild the document ID to index mapping."""
         self._id_to_idx = {doc.doc_id: idx for idx, doc in enumerate(self.documents)}
     
     def add_document(self, doc: Document):
-        """Add a document to the corpus."""
         self._id_to_idx[doc.doc_id] = len(self.documents)
         self.documents.append(doc)
     
     def get_by_id(self, doc_id: str) -> Optional[Document]:
-        """Retrieve a document by its ID."""
         idx = self._id_to_idx.get(doc_id)
         return self.documents[idx] if idx is not None else None
     
     def get_by_index(self, idx: int) -> Document:
-        """Retrieve a document by its index."""
         return self.documents[idx]
     
     def get_texts(self) -> List[str]:
-        """Get all document texts."""
         return [doc.text for doc in self.documents]
     
     def get_ids(self) -> List[str]:
-        """Get all document IDs."""
         return [doc.doc_id for doc in self.documents]
     
     def __len__(self) -> int:
@@ -211,13 +189,11 @@ class Corpus:
         return iter(self.documents)
     
     def save(self, path: str):
-        """Save corpus to JSON file."""
         with open(path, 'w') as f:
             json.dump([doc.to_dict() for doc in self.documents], f, indent=2)
     
     @classmethod
     def load(cls, path: str) -> "Corpus":
-        """Load corpus from JSON file."""
         with open(path, 'r') as f:
             data = json.load(f)
         documents = [Document.from_dict(d) for d in data]
@@ -225,6 +201,5 @@ class Corpus:
     
     @classmethod
     def from_json(cls, data: List[Dict]) -> "Corpus":
-        """Create corpus from list of dictionaries."""
         documents = [Document.from_dict(d) for d in data]
         return cls(documents)

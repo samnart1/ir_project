@@ -18,21 +18,7 @@ import numpy as np
 def precision_at_k(retrieved: List[str], 
                    relevant: Set[str], 
                    k: int) -> float:
-    """
-    Calculate Precision@k.
     
-    Precision@k = |retrieved[:k] ∩ relevant| / k
-    
-    Measures the fraction of top-k retrieved documents that are relevant.
-    
-    Args:
-        retrieved: Ranked list of retrieved document IDs
-        relevant: Set of relevant document IDs
-        k: Cutoff position
-        
-    Returns:
-        Precision@k score (0.0 to 1.0)
-    """
     if k <= 0:
         return 0.0
     
@@ -45,21 +31,7 @@ def precision_at_k(retrieved: List[str],
 def recall_at_k(retrieved: List[str], 
                 relevant: Set[str], 
                 k: int) -> float:
-    """
-    Calculate Recall@k.
     
-    Recall@k = |retrieved[:k] ∩ relevant| / |relevant|
-    
-    Measures the fraction of relevant documents found in top-k.
-    
-    Args:
-        retrieved: Ranked list of retrieved document IDs
-        relevant: Set of relevant document IDs
-        k: Cutoff position
-        
-    Returns:
-        Recall@k score (0.0 to 1.0)
-    """
     if not relevant:
         return 0.0
     
@@ -72,17 +44,7 @@ def recall_at_k(retrieved: List[str],
 def f1_at_k(retrieved: List[str], 
             relevant: Set[str], 
             k: int) -> float:
-    """
-    Calculate F1@k (harmonic mean of precision and recall at k).
     
-    Args:
-        retrieved: Ranked list of retrieved document IDs
-        relevant: Set of relevant document IDs
-        k: Cutoff position
-        
-    Returns:
-        F1@k score (0.0 to 1.0)
-    """
     p = precision_at_k(retrieved, relevant, k)
     r = recall_at_k(retrieved, relevant, k)
     
@@ -94,23 +56,7 @@ def f1_at_k(retrieved: List[str],
 
 def average_precision(retrieved: List[str], 
                       relevant: Set[str]) -> float:
-    """
-    Calculate Average Precision (AP).
     
-    AP = (1/|relevant|) * Σ (precision@k * rel(k))
-    
-    where rel(k) = 1 if document at position k is relevant, 0 otherwise.
-    
-    Average Precision considers both precision and the rank of relevant documents.
-    It rewards systems that rank relevant documents higher.
-    
-    Args:
-        retrieved: Ranked list of retrieved document IDs
-        relevant: Set of relevant document IDs
-        
-    Returns:
-        Average Precision score (0.0 to 1.0)
-    """
     if not relevant:
         return 0.0
     
@@ -128,20 +74,7 @@ def average_precision(retrieved: List[str],
 
 def mean_average_precision(all_retrieved: List[List[str]], 
                            all_relevant: List[Set[str]]) -> float:
-    """
-    Calculate Mean Average Precision (MAP).
     
-    MAP = (1/|Q|) * Σ AP(q) for all queries q in Q
-    
-    MAP is the primary metric for evaluating ranked retrieval systems.
-    
-    Args:
-        all_retrieved: List of retrieved document lists (one per query)
-        all_relevant: List of relevant document sets (one per query)
-        
-    Returns:
-        MAP score (0.0 to 1.0)
-    """
     if not all_retrieved:
         return 0.0
     
@@ -154,22 +87,11 @@ def mean_average_precision(all_retrieved: List[List[str]],
 
 
 def dcg_at_k(relevances: List[float], k: int) -> float:
-    """
-    Calculate Discounted Cumulative Gain at k.
     
-    DCG@k = Σ (2^rel_i - 1) / log2(i + 1) for i = 1 to k
-    
-    Args:
-        relevances: List of relevance scores in ranked order
-        k: Cutoff position
-        
-    Returns:
-        DCG@k score
-    """
     relevances = np.array(relevances[:k])
     positions = np.arange(1, len(relevances) + 1)
     
-    # Using the standard DCG formula
+    
     gains = (2 ** relevances - 1)
     discounts = np.log2(positions + 1)
     
@@ -179,35 +101,20 @@ def dcg_at_k(relevances: List[float], k: int) -> float:
 def ndcg_at_k(retrieved: List[str], 
               relevance_scores: Dict[str, float], 
               k: int) -> float:
-    """
-    Calculate Normalized Discounted Cumulative Gain at k (NDCG@k).
     
-    NDCG@k = DCG@k / IDCG@k
-    
-    NDCG handles graded relevance (not just binary) and normalizes
-    by the ideal ranking, giving scores in [0, 1].
-    
-    Args:
-        retrieved: Ranked list of retrieved document IDs
-        relevance_scores: Dict mapping doc_id to relevance score (e.g., 0, 1, 2, 3)
-        k: Cutoff position
-        
-    Returns:
-        NDCG@k score (0.0 to 1.0)
-    """
     if k <= 0:
         return 0.0
     
-    # Get relevance scores for retrieved documents
+    
     retrieved_relevances = [
         relevance_scores.get(doc_id, 0.0)
         for doc_id in retrieved[:k]
     ]
     
-    # Calculate DCG
+    
     dcg = dcg_at_k(retrieved_relevances, k)
     
-    # Calculate ideal DCG (best possible ranking)
+    
     ideal_relevances = sorted(relevance_scores.values(), reverse=True)[:k]
     idcg = dcg_at_k(ideal_relevances, k)
     
@@ -218,18 +125,7 @@ def ndcg_at_k(retrieved: List[str],
 
 
 def reciprocal_rank(retrieved: List[str], relevant: Set[str]) -> float:
-    """
-    Calculate Reciprocal Rank.
     
-    RR = 1 / rank of first relevant document
-    
-    Args:
-        retrieved: Ranked list of retrieved document IDs
-        relevant: Set of relevant document IDs
-        
-    Returns:
-        Reciprocal Rank score (0.0 to 1.0)
-    """
     for rank, doc_id in enumerate(retrieved, 1):
         if doc_id in relevant:
             return 1.0 / rank
@@ -239,20 +135,7 @@ def reciprocal_rank(retrieved: List[str], relevant: Set[str]) -> float:
 
 def mean_reciprocal_rank(all_retrieved: List[List[str]], 
                          all_relevant: List[Set[str]]) -> float:
-    """
-    Calculate Mean Reciprocal Rank (MRR).
     
-    MRR = (1/|Q|) * Σ RR(q) for all queries q in Q
-    
-    MRR is useful when there's typically one "correct" answer.
-    
-    Args:
-        all_retrieved: List of retrieved document lists (one per query)
-        all_relevant: List of relevant document sets (one per query)
-        
-    Returns:
-        MRR score (0.0 to 1.0)
-    """
     if not all_retrieved:
         return 0.0
     
@@ -268,19 +151,7 @@ def compute_all_metrics(retrieved: List[str],
                         relevant: Set[str],
                         k_values: List[int] = [1, 3, 5, 10],
                         relevance_scores: Dict[str, float] = None) -> Dict[str, float]:
-    """
-    Compute all metrics for a single query.
     
-    Args:
-        retrieved: Ranked list of retrieved document IDs
-        relevant: Set of relevant document IDs
-        k_values: List of k values for P@k, R@k, NDCG@k
-        relevance_scores: Optional graded relevance scores for NDCG
-        
-    Returns:
-        Dictionary of metric names to scores
-    """
-    # Use binary relevance for NDCG if no grades provided
     if relevance_scores is None:
         relevance_scores = {doc_id: 1.0 for doc_id in relevant}
     

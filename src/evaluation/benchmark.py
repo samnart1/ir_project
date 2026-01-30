@@ -24,7 +24,6 @@ from ..retrievers.base import BaseRetriever
 
 @dataclass
 class QueryRelevance:
-    """Represents a query with its relevance judgments."""
     query_id: str
     query_text: str
     relevant_docs: Set[str] = field(default_factory=set)
@@ -49,47 +48,23 @@ class QueryRelevance:
 
 
 class Benchmark:
-    """
-    Benchmarking suite for evaluating and comparing retrievers.
-    
-    Usage:
-        benchmark = Benchmark(queries)
-        results = benchmark.evaluate(retriever)
-        benchmark.compare([retriever1, retriever2, retriever3])
-    """
     
     def __init__(self, 
                  queries: Optional[List[QueryRelevance]] = None,
                  k_values: List[int] = [1, 3, 5, 10]):
-        """
-        Initialize benchmark.
-        
-        Args:
-            queries: List of queries with relevance judgments
-            k_values: List of k values for computing metrics
-        """
+    
         self.queries = queries or []
         self.k_values = k_values
     
     def add_query(self, query: QueryRelevance):
-        """Add a query to the benchmark."""
+        
         self.queries.append(query)
     
     def evaluate(self, 
                  retriever: BaseRetriever,
                  top_k: int = 100,
                  verbose: bool = True) -> Dict[str, float]:
-        """
-        Evaluate a retriever on all benchmark queries.
         
-        Args:
-            retriever: The retriever to evaluate
-            top_k: Number of documents to retrieve per query
-            verbose: Whether to print progress
-            
-        Returns:
-            Dictionary of aggregated metrics
-        """
         if not self.queries:
             raise ValueError("No queries in benchmark. Add queries first.")
         
@@ -99,7 +74,6 @@ class Benchmark:
         total_time = 0.0
         
         for query in self.queries:
-            # Time the retrieval
             start = time.time()
             retrieved_ids = retriever.retrieve_ids(query.query_text, top_k)
             elapsed = time.time() - start
@@ -108,14 +82,12 @@ class Benchmark:
             all_retrieved.append(retrieved_ids)
             all_relevant.append(query.relevant_docs)
             
-            # Compute per-query metrics
             query_metrics = {}
             for k in self.k_values:
                 query_metrics[f'P@{k}'] = precision_at_k(retrieved_ids, query.relevant_docs, k)
                 query_metrics[f'R@{k}'] = recall_at_k(retrieved_ids, query.relevant_docs, k)
                 query_metrics[f'F1@{k}'] = f1_at_k(retrieved_ids, query.relevant_docs, k)
                 
-                # Use graded relevance if available, otherwise binary
                 rel_scores = query.graded_relevance if query.graded_relevance else {d: 1.0 for d in query.relevant_docs}
                 query_metrics[f'NDCG@{k}'] = ndcg_at_k(retrieved_ids, rel_scores, k)
             
@@ -124,7 +96,6 @@ class Benchmark:
             
             all_metrics.append(query_metrics)
         
-        # Aggregate metrics
         aggregated = {}
         metric_names = all_metrics[0].keys()
         
@@ -133,11 +104,9 @@ class Benchmark:
             aggregated[metric] = np.mean(values)
             aggregated[f'{metric}_std'] = np.std(values)
         
-        # Add MAP and MRR (computed globally)
         aggregated['MAP'] = mean_average_precision(all_retrieved, all_relevant)
         aggregated['MRR'] = mean_reciprocal_rank(all_retrieved, all_relevant)
         
-        # Add timing info
         aggregated['avg_query_time_ms'] = (total_time / len(self.queries)) * 1000
         aggregated['total_time_s'] = total_time
         
@@ -149,16 +118,7 @@ class Benchmark:
     def compare(self,
                 retrievers: List[BaseRetriever],
                 top_k: int = 100) -> Dict[str, Dict[str, float]]:
-        """
-        Compare multiple retrievers.
         
-        Args:
-            retrievers: List of retrievers to compare
-            top_k: Number of documents to retrieve per query
-            
-        Returns:
-            Dictionary mapping retriever names to their results
-        """
         print("=" * 70)
         print("RETRIEVER COMPARISON")
         print("=" * 70)
@@ -172,17 +132,14 @@ class Benchmark:
             print("-" * 40)
             results[retriever.name] = self.evaluate(retriever, top_k, verbose=True)
         
-        # Print comparison table
         self._print_comparison_table(results)
         
         return results
     
     def _print_results(self, name: str, metrics: Dict[str, float]):
-        """Print formatted results."""
         print(f"\n{name} Results:")
         print("-" * 40)
         
-        # Key metrics
         key_metrics = ['MAP', 'MRR', 'P@10', 'R@10', 'NDCG@10']
         for metric in key_metrics:
             if metric in metrics:
@@ -191,14 +148,13 @@ class Benchmark:
         print(f"  {'Avg Time':12s}: {metrics['avg_query_time_ms']:.2f} ms/query")
     
     def _print_comparison_table(self, results: Dict[str, Dict[str, float]]):
-        """Print comparison table."""
         print("\n" + "=" * 70)
         print("COMPARISON SUMMARY")
         print("=" * 70)
         
         metrics_to_show = ['MAP', 'MRR', 'P@5', 'P@10', 'R@10', 'NDCG@10']
         
-        # Header
+        
         header = f"{'Retriever':20s}"
         for metric in metrics_to_show:
             header += f" {metric:>10s}"
@@ -206,7 +162,7 @@ class Benchmark:
         print(header)
         print("-" * 70)
         
-        # Results rows
+        
         for name, metrics in results.items():
             row = f"{name:20s}"
             for metric in metrics_to_show:
@@ -216,7 +172,6 @@ class Benchmark:
         
         print("=" * 70)
         
-        # Find best for each metric
         print("\nBest performers:")
         for metric in metrics_to_show:
             best_name = max(results.keys(), key=lambda n: results[n].get(metric, 0))
@@ -224,13 +179,11 @@ class Benchmark:
             print(f"  {metric}: {best_name} ({best_value:.4f})")
     
     def save(self, path: str):
-        """Save benchmark queries to JSON file."""
         with open(path, 'w') as f:
             json.dump([q.to_dict() for q in self.queries], f, indent=2)
     
     @classmethod
     def load(cls, path: str, k_values: List[int] = [1, 3, 5, 10]) -> "Benchmark":
-        """Load benchmark from JSON file."""
         with open(path, 'r') as f:
             data = json.load(f)
         queries = [QueryRelevance.from_dict(q) for q in data]
@@ -238,7 +191,7 @@ class Benchmark:
 
 
 def create_sample_benchmark() -> Benchmark:
-    """Create a sample benchmark for testing."""
+    
     queries = [
         QueryRelevance(
             query_id="q1",
